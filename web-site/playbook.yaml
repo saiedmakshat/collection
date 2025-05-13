@@ -1,0 +1,23 @@
+---
+- name: "Build container with ansible"
+  hosts: localhost
+  tasks:
+    - name: stop running container
+      command: docker stop web
+      ignore_errors: yes
+
+    - name: remove stoped container
+      command: docker rm web
+      ignore_errors: yes
+
+    - name: remove image
+      command: docker rmi website3
+      ignore_errors: yes
+
+    - name: build image
+      command: docker build -t website3 .
+      
+    - name: run image
+      command: docker run -d --name web -v '/home/saied/DevOps Training/web-site':/usr/share/nginx/html -p 80:80 website3
+      
+
