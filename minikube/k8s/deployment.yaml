@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: commingsoon-page-img-deployment
+  namespace: commingsoon
+spec: 
+  selector:
+    matchLabels:
+      app: commingsoon-page
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: commingsoon-page
+    spec:
+      containers:
+      - name: commingsoon-page
+        image: saiedmakshat/test-minikube
+        ports:
+        - containerPort: 80
