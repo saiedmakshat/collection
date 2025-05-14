@@ -1,0 +1,46 @@
+---
+- name: Write hostname
+  hosts: localhost
+  tasks:
+    - name: stop running container nginx
+      command : docker stop web-nginx
+      ignore_errors: yes
+
+    - name: stop running container apache
+      command : docker stop web-apache
+      ignore_errors: yes
+
+    - name: remove stopped container nginx
+      command: docker rm web-nginx
+      ignore_errors: yes
+
+    - name: remove stopped container apache
+      command: docker rm web-apache
+      ignore_errors: yes
+
+    - name: remove image nginx
+      command: docker rmi saiedmakshat/devops-basic:v1
+      ignore_errors: yes
+
+    - name: remove image apache
+      command: docker rmi saiedmakshat/devops-basic:v2
+      ignore_errors: yes
+
+    - name: build new image nginx
+      command: docker build -t saiedmakshat/devops-basic:v1 .
+
+    - name: build new image apache
+      command: docker build -t saiedmakshat/devops-basic:v2 dockerfiles
+
+    - name: create and run new container nginx
+      command: docker run -d --name web-nginx -p 8585:80 saiedmakshat/devops-basic:v1
+
+    - name: create and run new container apache
+      command: docker run -d --name web-apache -p 8484:80 saiedmakshat/devops-basic:v2
+
+    - name: add to git
+      command: git add .
+
+    - name: add to git
+      command: git commit -m "First Task"
+
