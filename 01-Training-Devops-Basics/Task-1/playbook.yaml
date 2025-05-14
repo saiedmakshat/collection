@@ -41,6 +41,14 @@
     - name: add to git
       command: git add .
 
-    - name: add to git
+    - name: commit to git
       command: git commit -m "First Task"
+
+    - name: commit to git
+      command: git remote origin-1 git remote add origin git@github.com:saiedmakshat/collection.git
+
+    - name: push to git
+      command: git push origin-1 main
+
+
 
