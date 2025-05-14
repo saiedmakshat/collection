@@ -38,22 +38,6 @@
     - name: create and run new container apache
       command: docker run -d --name web-apache -p 8484:80 saiedmakshat/devops-basic:v2
 
-    - name: add to git
-      command: git add -v .
-
-    - name: commit to git
-      command: git commit -m "First Task"
-
-    - name: chane main branch
-      command: git branch -M main
-      ignore_errors: yes
-
-    - name: remote repository to git
-      command: git remote add origin-1 git@github.com:saiedmakshat/collection.git
-      ignore_errors: yes
-
-    - name: push to git
-      command: git push -v origin-1 main
 
 
 
