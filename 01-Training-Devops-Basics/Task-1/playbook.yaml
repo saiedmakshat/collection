@@ -36,7 +36,7 @@
       command: docker run -d --name web-nginx -p 88:80 saiedmakshat/devops-basic:v1
 
     - name: create and run new container apache
-      command: docker run -d --name web-apache -p 87:80 saiedmakshat/devops-basic:v2
+      command: docker run -d --name web-apache -p 8888:80 saiedmakshat/devops-basic:v2
 
 
 
