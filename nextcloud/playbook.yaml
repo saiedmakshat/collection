@@ -1,0 +1,11 @@
+---
+- name: "run docker compose by ansible playbook to configure it to run by jenkins"
+  hosts: localhost
+  tasks:
+
+      - name: stop any running compose first
+        command: docker compose stop
+        ignore_errors: true
+
+      - name: run compose file
+        command: docker compose up -d
